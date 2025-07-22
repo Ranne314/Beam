@@ -32,4 +32,4 @@ Beam is a sleek, lightweight desktop app for instant file sharing. Built with Py
 Download this repo and run install.sh
 
 ```bash
-pip install customtkinter flask qrcode pillow crossfiledialog
+./install.sh
