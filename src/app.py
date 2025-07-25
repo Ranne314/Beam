@@ -9,13 +9,12 @@ import qrcode
 import os
 import webbrowser
 
-# === Flask Setup ===
 app = Flask(__name__)
 UPLOAD_FOLDER = os.getcwd()
 selected_file = ""
 
 @app.route('/download')
-def download_file():
+def download_file(): # DOWNLOAD --------------------------------------------------------------------------------------------------------------------------------
     if selected_file:
         return send_file(os.path.join(UPLOAD_FOLDER, selected_file), as_attachment=True)
     return "No file selected", 404
@@ -25,7 +24,6 @@ def run_server():
 
 threading.Thread(target=run_server, daemon=True).start()
 
-# === IP Resolver ===
 def get_ip():
     s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     try:
@@ -63,7 +61,6 @@ qr_label.pack(pady=15)
 footer = CTkLabel(root, text="⚡ Made by Ranne314", font=("Segoe UI", 10), text_color="gray")
 footer.pack(pady=5)
 
-# === Core Logic ===
 def select_file():
     global selected_file
     filepath = open_file()
@@ -83,5 +80,4 @@ def generate_qr(link):
     qr_label.configure(image=img_ctk)
     qr_label.image = img_ctk
 
-# === Launch App ===
 root.mainloop()
